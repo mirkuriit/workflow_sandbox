@@ -1,7 +1,9 @@
 
 
 name: CI
-
+env: 
+  TELEGRAM_CHAT_ID: 1132873850
+  #TELEGRAM_TOKEN: $
 on:
   push: 
     branches:
@@ -15,7 +17,15 @@ jobs:
 
     steps:
         - name: TestEvent
-          run: echo "Hello world"
+          run: echo "Hello world ${{ env.TELEGRAM_CHAT_ID }}"
+
+        - name: ECHO_TG_CHAT
+          run: echo $TELEGRAM_CHAT_ID
+        
+        - name:  git-clone-repo
+          uses: actions/checkout@v1
+          run: ls -la
+   
           
   my_deploy:
     runs-on: ubuntu-latest
@@ -23,6 +33,6 @@ jobs:
 
     steps:
         - name: HelloEvent
-          run: echo "Hello world"
+          run: echo "Hello world  ${{ env.TELEGRAM_CHAT_ID }} "
         
     
