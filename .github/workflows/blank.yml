@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        - name: print_vars
+          run: echo "$TGBOT_TOKEN - $TG_CHAT_ID"
         - name: sned_tg_msg
           run: curl -X POST \
                -H "Content-Type:multipart/form-data" \
