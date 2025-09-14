@@ -19,11 +19,7 @@ jobs:
         - name: print_vars
           run: echo "$TGBOT_TOKEN - $TG_CHAT_ID"
         - name: sned_tg_msg
-          run: curl -X POST \
-               -H "Content-Type:multipart/form-data" \
-               -F chat_id=$TG_CHAT_ID \
-               -F text="push was created" \
-                https://api.telegram.org/bot${TGBOT_TOKEN}/sendMessage
+          run: curl -X POST -H "Content-Type:multipart/form-data" -F chat_id=$TG_CHAT_ID -F text="push was created" https://api.telegram.org/bot${TGBOT_TOKEN}/sendMessage
 
         
     
