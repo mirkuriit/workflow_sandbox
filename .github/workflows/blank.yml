@@ -24,6 +24,8 @@ jobs:
         
         - name:  git-clone-repo
           uses: actions/checkout@v1
+
+        - name: readdir
           run: ls -la
    
           
