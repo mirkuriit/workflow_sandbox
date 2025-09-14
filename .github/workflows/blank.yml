@@ -1,0 +1,27 @@
+
+
+name: CI
+
+on:
+  push: 
+    branches:
+        - main
+    
+  workflow_dispatch:
+
+jobs:
+  my_testing:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: TestEvent
+          run: echo "Hello world"
+          
+  my_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: HelloEvent
+          run: echo "Hello world"
+        
+    
