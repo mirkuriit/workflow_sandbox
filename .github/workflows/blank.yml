@@ -2,8 +2,8 @@
 
 name: CI
 env: 
-  TELEGRAM_CHAT_ID: 1132873850
-  #TELEGRAM_TOKEN: $
+  TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+  TGBOT_TOKEN: ${{ secrets.TGBOT_TOKEN }}
 on:
   push: 
     branches:
@@ -16,25 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: TestEvent
-          run: echo "Hello world ${{ env.TELEGRAM_CHAT_ID }}"
+        - name: sned_tg_msg
+          run: curl -X POST \
+               -H "Content-Type:multipart/form-data" \
+               -F chat_id=$TG_CHAT_ID \
+               -F text="push was created" \
+                https://api.telegram.org/bot${TGBOT_TOKEN}/sendMessage
 
-        - name: ECHO_TG_CHAT
-          run: echo $TELEGRAM_CHAT_ID
-        
-        - name:  git-clone-repo
-          uses: actions/checkout@v1
-
-        - name: readdir
-          run: ls -la
-   
-          
-  my_deploy:
-    runs-on: ubuntu-latest
-    needs: [my_testing]
-
-    steps:
-        - name: HelloEvent
-          run: echo "Hello world  ${{ env.TELEGRAM_CHAT_ID }} "
         
     
